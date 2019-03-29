@@ -47,6 +47,7 @@
     "electron-builder": "^20.39.0",
     "eslint": "^5.15.3",
     "eslint-plugin-react": "^7.12.4",
+    "prettier": "1.16.4",
     "typescript": "^3.3.3333"
   }
 }
