@@ -9784,6 +9784,25 @@ react-cosmos-playground@^4.8.0-alpha.0:
   resolved "https://registry.yarnpkg.com/react-cosmos-playground/-/react-cosmos-playground-4.8.2.tgz#dfc12b3ca80ae2eb63f34eb6f7c702948e05ad6d"
   integrity sha512-pEHRYG8gEL6G6uJJMqwMW8ZZ4FN9jsgo7yn1eWfCtGkVblR+eHh8Qae5nWyey81rvUCmpHRWNwielW39BJfpzw==
 
+react-cosmos-redux-proxy@^4.8.2:
+  version "4.8.2"
+  resolved "https://registry.yarnpkg.com/react-cosmos-redux-proxy/-/react-cosmos-redux-proxy-4.8.2.tgz#3544ac7caa39f263ca7b1325330c3cc436d983dd"
+  integrity sha512-9JTqskcGRDdnuIAuWJTJxsS14OVcpdfI/nLyqzbxzj4eJEcyAg3Ic8f12SkPmbuqHo4wws4w/UgsCyr3FC6DrA==
+  dependencies:
+    "@babel/runtime-corejs2" "^7.3.1"
+    lodash.omit "^4.5.0"
+    react-cosmos-shared "^4.8.2"
+    redux "^4.0.1"
+
+react-cosmos-router-proxy@^4.8.2:
+  version "4.8.2"
+  resolved "https://registry.yarnpkg.com/react-cosmos-router-proxy/-/react-cosmos-router-proxy-4.8.2.tgz#9f29f70608260650eedf2685f6beee8761498162"
+  integrity sha512-EFJ6+sBXUkB7dTEd9pK3aT81S0mxsfQTSUACA7VuPXTOtLXbiAhKzICRwzMmYLfjFXprXEJhiSQ6beRWGTwyTQ==
+  dependencies:
+    "@babel/runtime-corejs2" "^7.3.1"
+    react-cosmos-shared "^4.8.2"
+    url "^0.11.0"
+
 react-cosmos-shared2@^4.8.1:
   version "4.8.1"
   resolved "https://registry.yarnpkg.com/react-cosmos-shared2/-/react-cosmos-shared2-4.8.1.tgz#b782b300c7593ed66e2eb952bb03b01261a7999c"
