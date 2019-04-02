@@ -1,0 +1,27 @@
+image: node:10.15.3
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - .cache_yarn
+
+stages:
+  - install
+  - build
+  - test
+  - deploy
+
+install_react:
+  stage: install
+  script:
+    - yarn install --cache-folder ../.cache_yarn
+  artifacts:
+    paths:
+      - node_modules
+
+test_react:
+  stage: test
+  script: 
+    - yarn test
+  dependencies:
+    - install_react
