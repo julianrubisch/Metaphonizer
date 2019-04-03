@@ -18,7 +18,8 @@ module.exports = {
       choices: () => [
         "ES6 Class Component",
         "Stateless Component",
-        "Redux Container Component"
+        "Redux Container Component",
+        "Styled Wrapper"
       ]
     },
     {
@@ -36,12 +37,13 @@ module.exports = {
     {
       type: "input",
       name: "wrappedName",
-      message: "Does it wrap a component?",
+      message: "Does it connect a component?",
       default: "Button"
     }
   ],
   actions: data => {
     let componentTemplate;
+    let nameSuffix = "";
 
     switch (data.type) {
       case "ES6 Class Component": {
@@ -56,6 +58,11 @@ module.exports = {
         componentTemplate = "./component/containerComponent.hbs";
         break;
       }
+      case "Styled Component": {
+        componentTemplate = "./component/styledComponent.hbs";
+        nameSuffix = ".styled";
+        break;
+      }
       default: {
         componentTemplate = "./component/classComponent.hbs";
       }
@@ -63,7 +70,7 @@ module.exports = {
     const actions = [
       {
         type: "add",
-        path: `${appRoot}/{{path}}/{{dashCase name}}.js`,
+        path: `${appRoot}/{{path}}/{{dashCase name}}${nameSuffix}.js`,
         templateFile: componentTemplate,
         abortOnFail: true
       }
