@@ -9794,6 +9794,11 @@ react-cosmos-redux-proxy@^4.8.2:
     react-cosmos-shared "^4.8.2"
     redux "^4.0.1"
 
+react-cosmos-redux@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-cosmos-redux/-/react-cosmos-redux-1.0.2.tgz#11df02afe702322b2cdb6c1c97ece1cace5e7b56"
+  integrity sha512-TEzy8w1ubxf2NJFeLvYIhGFGpEn2QeZotKWOk+2ABJte4+QkspNZScH7zfwtGkaijcQgAo2fTwPB8QwsenF3Xw==
+
 react-cosmos-router-proxy@^4.8.2:
   version "4.8.2"
   resolved "https://registry.yarnpkg.com/react-cosmos-router-proxy/-/react-cosmos-router-proxy-4.8.2.tgz#9f29f70608260650eedf2685f6beee8761498162"

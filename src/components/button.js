@@ -6,10 +6,13 @@ import { ButtonWrapper } from "./button-wrapper.styled";
 /**
  * Button
  */
-export const Button = props => <ButtonWrapper>{props.title}</ButtonWrapper>;
+export const Button = props => (
+  <ButtonWrapper onClick={props.clickAction}>{props.title}</ButtonWrapper>
+);
 
 Button.propTypes = {
-  title: PropTypes.string
+  title: PropTypes.string,
+  clickAction: PropTypes.func
 };
 
 export default Button;
