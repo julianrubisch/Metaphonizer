@@ -1,68 +1,75 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Electron React Starter Template
 
-## Available Scripts
+Find the original Creat-React-App README at README.cra.md
 
-In the project directory, you can run:
+## Generating new Components with Plop
 
-### `npm start`
+Run
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> yarn run
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Select one of the generators:
 
-### `npm test`
+> ES6 Class Component
+> Stateless Component
+> Redux Container Component
+> Styled Wrapper
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Developing Components with Cosmos
 
-### `npm run build`
+Start
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> yarn cosmos
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Surf to [http://localhost:8989/](http://localhost:8989/) and develop your components.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Fixtures
 
-### `npm run eject`
+To view and debug components, place an equally named fixture in the `__jsxfixtures__` folder beneath your component.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+E.g.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```jsx
+import React from "react";
+import Button from "../button";
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+export default <Button title="A Button" />;
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+for a simple component, or
 
-## Learn More
+```jsx
+import React from "react";
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+import { MyReduxMock } from "../../util/my-redux-mock";
+import CounterButton from "../counter-button";
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+export default (
+  <MyReduxMock initialState={{ count: 99 }}>
+    <CounterButton />
+  </MyReduxMock>
+);
+```
 
-### Code Splitting
+if you want to mock Redux state.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Continuous Integration / Pre-Commit Hooks with Husky / Lint-Staged
 
-### Analyzing the Bundle Size
+As a pre-commit hook, the following commands are run:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+```json
+{
+  "*.{js,css,json,md}": ["prettier --write", "git add"],
+  "*.js": ["eslint --fix", "git add"]
+}
+```
 
-### Making a Progressive Web App
+So if eslint fails, the commit will be rejected. Everything that is autofixable will be fixed.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Packaging with Electron-Builder
 
-### Advanced Configuration
+Run
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+> yarn electron-pack
 
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+to trigger an `electron-builder` build for both Windows and Mac OS.
