@@ -6,20 +6,20 @@ Find the original Creat-React-App README at README.cra.md
 
 Run
 
-> yarn run
+    $ yarn run
 
 Select one of the generators:
 
-> ES6 Class Component
-> Stateless Component
-> Redux Container Component
-> Styled Wrapper
+    $ ES6 Class Component
+    $ Stateless Component
+    $ Redux Container Component
+    $ Styled Wrapper
 
 ## Developing Components with Cosmos
 
 Start
 
-> yarn cosmos
+    $ yarn cosmos
 
 Surf to [http://localhost:8989/](http://localhost:8989/) and develop your components.
 
@@ -70,6 +70,6 @@ So if eslint fails, the commit will be rejected. Everything that is autofixable 
 
 Run
 
-> yarn electron-pack
+    $ yarn electron-pack
 
 to trigger an `electron-builder` build for both Windows and Mac OS.
