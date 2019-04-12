@@ -1,18 +1,25 @@
-const {app, BrowserWindow} = require('electron');
-const path = require('path');
+const { app, BrowserWindow } = require("electron");
+// const path = require("path");
 
-function createWindow () {   
-  // Create the browser window.     
-  const win = new BrowserWindow({width: 800, height: 600});
+require("http")
+  .createServer(function(req, res) {
+    res.end("Hello from server started by Electron app!");
+  })
+  .listen(9000);
 
-  if(process.env.NODE_ENV === 'development') {
-    win.loadURL('http://localhost:3000');
+function createWindow() {
+  // Create the browser window.
+  const win = new BrowserWindow({ width: 800, height: 600 });
+
+  if (process.env.NODE_ENV === "development") {
+    win.loadURL("http://localhost:3000");
+    win.webContents.openDevTools();
   } else {
-    win.loadURL(`file://${path.join(__dirname, '../build/index.html')}`);
+    require("./server");
+    // win.loadURL(`file://${path.join(__dirname, '../build/index.html')}`);
+    win.loadURL("http://localhost:8080");
+    win.webContents.openDevTools();
   }
+}
 
-  win.webContents.openDevTools();
-}      
-
-
-app.on('ready', createWindow);
+app.on("ready", createWindow);

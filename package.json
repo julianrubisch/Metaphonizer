@@ -5,6 +5,7 @@
   "main": "public/Main.js",
   "homepage": "./",
   "dependencies": {
+    "express": "^4.16.4",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",
