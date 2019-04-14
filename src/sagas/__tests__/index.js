@@ -2,8 +2,8 @@ import sagaHelper from "redux-saga-testing";
 import { call, put } from "redux-saga/effects";
 import sinon from "sinon";
 
-import Api from "../api/Api";
-import { handleFetchUsers } from ".";
+import Api from "../../api/Api";
+import { handleFetchUsers } from "..";
 
 sinon.stub(Api, "fetchUsers").callsFake(() => [{ id: 1, username: "johndoe" }]);
 
