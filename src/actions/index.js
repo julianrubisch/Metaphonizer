@@ -1,3 +1,4 @@
-export const increaseCounter = () => ({
-  type: "INCREASE_COUNTER"
+export const addUnprocessedFiles = files => ({
+  type: "ADD_UNPROCESSED_FILES",
+  files
 });

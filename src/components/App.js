@@ -1,28 +1,45 @@
-import React, { Component } from 'react';
-import logo from '../logo.svg';
-import './App.css';
+import React from "react";
+import PropTypes from "prop-types";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+import { connect } from "react-redux";
+import { useDropzone } from "react-dropzone";
+
+import { addUnprocessedFiles } from "../actions";
+
+const App = ({ addFiles, files }) => {
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop: files => addFiles(files)
+  });
+
+  return (
+    <section className="container">
+      <div {...getRootProps({ className: "dropzone" })}>
+        <input {...getInputProps()} />
+        <p>Drag n drop some files here, or click to select files</p>
       </div>
-    );
-  }
-}
+      <aside>
+        <h4>Files</h4>
+        {/* <ul>{files}</ul> */}
+        {files.map(file => (
+          <li key={file.path}>
+            {file.path} - {file.size} bytes
+          </li>
+        ))}
+      </aside>
+    </section>
+  );
+};
 
-export default App;
+App.propTypes = {
+  addFiles: PropTypes.func,
+  files: PropTypes.array
+};
+
+export default connect(
+  state => ({ files: state.files }),
+  dispatch => {
+    return {
+      addFiles: files => dispatch(addUnprocessedFiles(files))
+    };
+  }
+)(App);
