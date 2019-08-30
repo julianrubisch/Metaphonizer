@@ -1,15 +1,15 @@
 import React from "react";
+import PropTypes from "prop-types";
 
+import { connect } from "react-redux";
 import { useDropzone } from "react-dropzone";
 
-const App = () => {
-  const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
+import { addUnprocessedFiles } from "../actions";
 
-  const files = acceptedFiles.map(file => (
-    <li key={file.path}>
-      {file.path} - {file.size} bytes
-    </li>
-  ));
+const App = ({ addFiles, files }) => {
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop: files => addFiles(files)
+  });
 
   return (
     <section className="container">
@@ -19,10 +19,27 @@ const App = () => {
       </div>
       <aside>
         <h4>Files</h4>
-        <ul>{files}</ul>
+        {/* <ul>{files}</ul> */}
+        {files.map(file => (
+          <li key={file.path}>
+            {file.path} - {file.size} bytes
+          </li>
+        ))}
       </aside>
     </section>
   );
 };
 
-export default App;
+App.propTypes = {
+  addFiles: PropTypes.func,
+  files: PropTypes.array
+};
+
+export default connect(
+  state => ({ files: state.files }),
+  dispatch => {
+    return {
+      addFiles: files => dispatch(addUnprocessedFiles(files))
+    };
+  }
+)(App);
